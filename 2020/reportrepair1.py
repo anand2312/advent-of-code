@@ -1,9 +1,7 @@
 """Advent of Code Day 1"""
-import json
+from utils import get_data
 
-with open("inputs.json", "r") as f:
-  report = json.load(f)['report']
-
+report = get_data('report')
 for i in report:
     if (j := 2020 - i) in report:
         print(i * j)
