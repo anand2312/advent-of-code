@@ -1,3 +1,4 @@
+"""Advent of Code Day 2"""
 from utils import get_data
 from collections import namedtuple
 
@@ -22,4 +23,5 @@ def more_parse(value: str) -> ParsedElement:
 
 parsed_data = map(more_parse, raw_data)
 
-print(len(list(filter(check, parsed_data))))
+if __name__ == "__main__":
+    print(len(list(filter(check, parsed_data))))
