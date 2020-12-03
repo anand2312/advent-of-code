@@ -2,8 +2,7 @@ from day_3_task1 import raw_data, total_rows
 import math
 
 # Reimplimenting the index incrementers to work with any increment. Should've done this in the other file :/
-def custom_vertical_inc(old: int, down: int) -> int:
-    global total_rows
+def custom_vertical_inc(old: int, down: int, total_rows: int=total_rows) -> int:
     if old == total_rows - 1:
         raise IndexError
     else:
