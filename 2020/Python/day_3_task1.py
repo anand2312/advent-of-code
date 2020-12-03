@@ -23,12 +23,13 @@ def inc_vertical_index(old: int) -> int:
     else:
         return old + 1
 
-ver, hor = 0, 0    #  starting coordinates
-try:
-    while True:
-        if raw_data[ver][hor] == "#":
-            trees += 1
-        ver, hor = inc_vertical_index(ver), inc_horizontal_index(hor)
-except IndexError:
-    print(trees)
+if __name__ == "__main__":
+    ver, hor = 0, 0    #  starting coordinates
+    try:
+        while True:
+            if raw_data[ver][hor] == "#":
+                trees += 1
+            ver, hor = inc_vertical_index(ver), inc_horizontal_index(hor)
+    except IndexError:
+        print(trees)
     
