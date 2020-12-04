@@ -36,5 +36,3 @@ def main() -> None:
         except TypeError:
             continue
     print(count)
-
-main()
