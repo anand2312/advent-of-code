@@ -1,3 +1,4 @@
+"""Advent of Code Day 3"""
 from day_3_task1 import raw_data, total_rows
 import math
 

@@ -1,3 +1,4 @@
+"""Advent of Code Day 3"""
 from utils import get_data
 
 raw_data = get_data("trees")

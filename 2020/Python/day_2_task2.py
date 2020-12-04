@@ -1,3 +1,4 @@
+"""Advent of Code Day 2"""
 from day_2_task1 import parsed_data, ParsedElement
 
 # in this case `low` and `high` are positions in the string
