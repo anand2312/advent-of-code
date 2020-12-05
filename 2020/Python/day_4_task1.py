@@ -1,5 +1,5 @@
 """Advent of Code Day 4"""
-from utils import get_data
+from utils import get_data, avg_timer
 from dataclasses import dataclass
 import typing
 
@@ -27,6 +27,7 @@ def parse_passport(raw: str) -> dict:
         d[key] = value
     return d
 
+@avg_timer()
 def main() -> None:
     count = 0
     for raw_string in raw_data:

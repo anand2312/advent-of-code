@@ -30,6 +30,20 @@ def avg_timer(run: int=10):
         return inner_wrapper
     return wrapper 
 
+def avg_timer_ns(run: int=10):
+    def wrapper(func):
+        def inner_wrapper(*args, **kwargs):
+            times = []
+            for i in range(run):
+                start = time.perf_counter_ns()
+                result = func(*args, **kwargs)
+                end = time.perf_counter_ns()
+                times.append(end - start)
+            print(f"Average time over {run} runs: {sum(times)/run} ns")
+            return result
+        return inner_wrapper
+    return wrapper
+
             
 
                 

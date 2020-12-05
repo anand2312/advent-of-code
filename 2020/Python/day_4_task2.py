@@ -1,6 +1,6 @@
 """Advent of Code Day 4"""
 from day_4_task1 import Passport, parse_passport
-from utils import get_data
+from utils import get_data, avg_timer
 
 raw_data = get_data("passports")
 
@@ -40,6 +40,7 @@ def validate_passport(passport_obj: Passport) -> bool:
 
     return True
 
+@avg_timer()
 def main() -> None:
     count = 0
     for raw_string in raw_data:
