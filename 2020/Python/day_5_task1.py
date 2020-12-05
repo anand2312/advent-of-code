@@ -48,5 +48,3 @@ def main() -> None:
         _id = seat_id(row=row, column=column)
         ids.append(_id)
     print(max(ids))
-
-main()
