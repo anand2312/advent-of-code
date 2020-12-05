@@ -44,6 +44,5 @@ def avg_timer_ns(run: int=10):
         return inner_wrapper
     return wrapper
 
-            
-
+odd = lambda x: x % 2 != 0
                 
