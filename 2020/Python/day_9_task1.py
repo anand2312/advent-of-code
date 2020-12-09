@@ -23,4 +23,5 @@ def main(data: list) -> int:
             high += 1
             current += 1
 
-print(main(data))
+if __name__ == "__main__":
+    print(main(data))
