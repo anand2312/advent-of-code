@@ -12,6 +12,9 @@ class Bag:
     name: str
     children: typing.Mapping[str, int]
 
+    def get_from_string(self, key: str, all_values: dict) -> "Bag":
+        return all_values[key]
+
 
 def parse_rule(rule: str) -> typing.Mapping[str, Bag]:
     parsed = dict()
@@ -51,10 +54,14 @@ def parse_all_rules(data: list) -> dict:
 
 parsed_data = parse_all_rules(raw_data)
 
-def main(data: dict) -> int:
-    possible_parents = set()
 
-    for i in data:
+
+        
+
+
+
+
+
         
 
     
