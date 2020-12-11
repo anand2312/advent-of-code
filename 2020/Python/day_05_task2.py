@@ -1,5 +1,5 @@
 """Advent of Code Day 5"""
-from day_5_task1 import find_row, find_column, seat_id
+from day_05_task1 import find_row, find_column, seat_id
 from utils import get_data
 
 data = get_data("boarding-pass")

@@ -2,7 +2,6 @@
 from utils import get_data
 from dataclasses import dataclass
 import typing
-import pprint
 
 raw_data = get_data("bags")
 # data is now in the form of a list of strings, with each string being a bag rule

@@ -1,5 +1,5 @@
 """Advent of Code Day 4"""
-from day_4_task1 import Passport, parse_passport
+from day_04_task1 import Passport, parse_passport
 from utils import get_data, avg_timer
 
 raw_data = get_data("passports")

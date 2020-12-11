@@ -1,6 +1,6 @@
 """Advent of Code Day 9"""
 from utils import get_data
-from day_9_task1 import main as find_invalid_number
+from day_09_task1 import main as find_invalid_number
 from itertools import accumulate
 import operator
 

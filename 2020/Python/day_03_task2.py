@@ -1,5 +1,5 @@
 """Advent of Code Day 3"""
-from day_3_task1 import raw_data, total_rows
+from day_03_task1 import raw_data, total_rows
 import math
 
 # Reimplimenting the index incrementers to work with any increment. Should've done this in the other file :/
