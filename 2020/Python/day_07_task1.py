@@ -1,11 +1,26 @@
 """Advent of Code Day 7"""
 from __future__ import annotations
+
+import typing
 from utils import get_data
 from dataclasses import dataclass
-import typing
+
 
 raw_data = get_data("bags")
 # data is now in the form of a list of strings, with each string being a bag rule
+
+
+@dataclass(eq=True, frozen=True)
+class Bag:
+    name: str
+    children: typing.Mapping[str, int]
+
+    @staticmethod
+    def from_string(key: str, all_values: dict) -> Bag:
+        return all_values[key]
+
+    def __hash__(self):
+        return hash(self.name)
 
 
 def parse_rule(rule: str) -> typing.Mapping[str, Bag]:
@@ -26,7 +41,7 @@ def parse_rule(rule: str) -> typing.Mapping[str, Bag]:
         try:
             unparsed_child = unparsed_child.strip()
             _bag_index = unparsed_child.find("bag")
-            children[unparsed_child[1:_bag_index].strip(".").strip()] = int(unparsed_child[0])
+            children[unparsed_child[1:_bag_index].strip(".").strip()] = int(unparsed_child[0]) # type: ignore
         except ValueError:
             # a ValueError is raised when 'no bags' occurs. in this case, keep the children part as None
             children = None
@@ -48,98 +63,33 @@ def parse_all_rules(data: list) -> dict:
     return parsed
 
 
-@dataclass(eq=True, frozen=True)
-class Bag:
-    name: str
-    children: typing.Mapping[str, int]
-
-    @staticmethod
-    def from_string(key: str, all_values: dict) -> Bag:
-        return all_values[key]
-
-    def __hash__(self):
-        return hash(self.name)
-
-
-@dataclass(eq=True, frozen=True)
-class Node:
-    state: Bag
-    parent: Node
-
-
-class StackFrontier:
-    def __init__(self):
-        self.frontier = []
-
-    def add(self, node: Node) -> None:
-        self.frontier.append(node)
-
-    def is_empty(self) -> bool:
-        return len(self.frontier) == 0
-
-    def remove(self) -> Node:
-        if self.is_empty():
-            raise Exception("Empty Stack")
-        else:
-            node = self.frontier[-1]
-            self.frontier = self.frontier[:-1]
-            return node
-
-    def contains_node(self, node: Node) -> bool:
-        return any([node.state == element.state for element in self.frontier])
-
-
-def solve(data: list) -> int:
-    # goes through the data using the DFS algorithm
-    data = parse_all_rules(data)
-    first_element = list(data.values())[0]
-    start = Node(state=first_element, parent=None)
-
-    goal_state = Bag.from_string("shiny gold", data)
-    stack = StackFrontier()
-    stack.add(start)
-
-    explored_set = set()
-    explored_count = 0
-    parent_count = 0
-
-    while True:
-        if stack.is_empty():
-            return parent_count
-
-        node = stack.remove()
-        explored_count += 1
-
-        if node.state == goal_state:
-            parent_nodes = []
-
-            while node.parent is not None:
-                parent_nodes.append(node)
-                node = node.parent
-
-            parent_count += len(parent_nodes)
-
-        explored_set.add(node)
-
-        if node.state.children is None:
-            continue
-
-        for bag in node.state.children.keys():    # node.state -> Bag object, now Bag.children is a dict, doing values makes it a list of child Bags
-            bag = Bag.from_string(bag, data)
-            as_node = Node(state=bag, parent=node)
-            if not stack.contains_node(as_node):
-                stack.add(as_node)
+def reach_shiny_gold(bag: Bag, all_bags: dict[str, Bag]) -> bool:
+    # go through the children to see if it eventually reaches a shiny gold
+    if bag.children is None:
+        # reached lowest case without reaching shiny gold
+        return False
+    if 'shiny gold' in bag.children:
+        return True
+    else:
+        results = []
+        for child_name in bag.children:
+            child_bag = all_bags[child_name]
+            results.append(reach_shiny_gold(child_bag, all_bags))
+        return any(results)
 
 
 if __name__ == "__main__":
-    raw_data = """light red bags contain 1 bright white bag, 2 muted yellow bags.
-dark orange bags contain 3 bright white bags, 4 muted yellow bags.
-bright white bags contain 1 shiny gold bag.
-muted yellow bags contain 2 shiny gold bags, 9 faded blue bags.
-shiny gold bags contain 1 dark olive bag, 2 vibrant plum bags.
-dark olive bags contain 3 faded blue bags, 4 dotted black bags.
-vibrant plum bags contain 5 faded blue bags, 6 dotted black bags.
-faded blue bags contain no other bags.
-dotted black bags contain no other bags.""".split("\n")
-    print(solve(raw_data))
+    bags = parse_all_rules(raw_data)
+
+    count = 0
+
+    for i in bags.values():
+        res = reach_shiny_gold(i, bags)
+        if res is True:
+            count += 1
+        elif res is None:
+            print("BROO!!!", i)
+    
+    print(count)
+
     
