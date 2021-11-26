@@ -15,9 +15,9 @@ def check(element: ParsedElement) -> bool:
 
 def more_parse(value: str) -> ParsedElement:
     """Takes raw data and organizes it into the namedtuple for easy access."""
-    value = value.split(': ')
-    pw = value[1]
-    range_, char = value[0].split()
+    values = value.split(': ')
+    pw = values[1]
+    range_, char = values[0].split()
     low, high = map(int, range_.split("-"))
     return ParsedElement(low, high, char, pw)
 
