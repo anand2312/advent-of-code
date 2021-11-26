@@ -192,7 +192,3 @@ if __name__ == "__main__":
         else:
             changed = False
             print(new.counts()["occupied"])
-
-
-
-
