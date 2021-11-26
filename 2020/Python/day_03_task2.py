@@ -1,6 +1,9 @@
 """Advent of Code Day 3"""
-from day_03_task1 import raw_data, total_rows
 import math
+from utils import get_data
+
+raw_data = get_data("trees")
+total_rows = len(raw_data)
 
 # Reimplimenting the index incrementers to work with any increment. Should've done this in the other file :/
 def custom_vertical_inc(old: int, down: int, total_rows: int=total_rows) -> int:
@@ -33,5 +36,3 @@ def count_trees(shifts: tuple, raw_data=raw_data) -> int:
 slopes = [(1, 1), (3, 1), (5, 1), (7, 1), (1, 2)]
 
 print(math.prod(map(count_trees, slopes)))
-
-

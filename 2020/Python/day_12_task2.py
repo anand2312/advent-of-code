@@ -56,4 +56,3 @@ def main() -> int:
     return manhattan
 
 main()
-        
