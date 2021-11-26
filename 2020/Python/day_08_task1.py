@@ -53,4 +53,5 @@ def main() -> None:
     loop = Executor()
     loop.run(data)
 
-main()
+if __name__ == "__main__":
+    main()
