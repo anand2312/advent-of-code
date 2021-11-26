@@ -3,7 +3,7 @@ from utils import get_data
 
 data = get_data("adapters")
 
-def main(data: list) -> int:
+def main(data: list) -> list:
     differences = []
     data = sorted(data)
 
@@ -13,13 +13,13 @@ def main(data: list) -> int:
     # can only connect if the previous jolt is 1-3 less than current one 
     check = lambda new, prev: new - prev >= 1 and new - prev <= 3
 
-    count = 0
+    index = 0
 
-    while count < len(data):
-        diff = data[count] - prev
+    while index < len(data):
+        diff = data[index] - prev
         differences.append(diff)
-        prev = data[count]
-        count += 1
+        prev = data[index]
+        index += 1
     else:
         diff = device - prev
         differences.append(diff)
