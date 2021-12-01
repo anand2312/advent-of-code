@@ -8,10 +8,8 @@ def main() -> int:
     count = 0
     depths = puzzle.intlines()
 
-    for i, depth in enumerate(depths):
-        if i == 0:
-            continue
-        if depth > depths[i - 1]:
+    for i, j in zip(depths, depths[1:]):
+        if i < j:
             count += 1
 
     return count
