@@ -6,12 +6,12 @@ from typing import List
 import requests
 from dotenv import load_dotenv
 
-load_dotenv(pathlib.Path(__file__).parent.parent / ".env")
+load_dotenv(pathlib.Path(__file__).parent.parent.parent / ".env")
 
 
 BASE_URL = "https://adventofcode.com/2021/day/{day}"
 INPUT_URL = BASE_URL + "/input"
-INPUT_DIR = pathlib.Path(__file__).parent / "inputs"
+INPUT_DIR = pathlib.Path(__file__).parent.parent / "inputs"
 
 
 class Puzzle:
@@ -38,7 +38,4 @@ class Puzzle:
         r = requests.get(INPUT_URL.format(day=self.day), cookies={"session": session})
         
         self.raw_content = r.text
-        self._input_file = INPUT_DIR / f"day_{self.day:0>2}.txt"
         self._input_file.write_text(r.text)
-
-Puzzle(1).get_input_data()

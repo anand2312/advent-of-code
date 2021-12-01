@@ -3,9 +3,25 @@ from utils import get_data
 
 
 data = get_data("bus shuttle")
-
-minimum = data["minimum timestamp"]
 ids = data["bus ids"]
+
+# Chinese Remainder Theorem: https://www.youtube.com/watch?v=zIFehsBHB8o
+# x === b (mod n),
+# which means that when x is divided by n, the remainder is b
+# CRT works on a series of such moduli where the n's are all mutually prime
+# that is, they have no common factors except 1
+# For such a series of moduli,
+# x === b1 (mod n1)
+# x === b2 (mod n2)
+# ...
+# x === bi (mod ni),
+# and where Ni = N / ni, where N = n1 * n2 * n3 ... * ni (i.e Ni is product of all n except for ni)
+# xi is inverse of corresponding Ni, calculated as shown https://youtu.be/zIFehsBHB8o?t=496 here.
+# The number we need (x) is equal to sum of bi * Ni * xi
+
+def inverse(x: int) -> int:
+    # inverse as shown https://youtu.be/zIFehsBHB8o?t=496
+    
 
 """
 naive implementation:
