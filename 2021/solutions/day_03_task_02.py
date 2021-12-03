@@ -10,6 +10,7 @@ length = len(lines[0])
 
 
 def get_criteria_at(pos: int, nums: list[str], _type: Literal["o2", "co2"]) -> str:
+    """Get the most/least common bit at a specified position"""
     counter = Counter([line[pos] for line in nums])
     ones, zeroes = counter['1'], counter['0']
     most = max(counter.keys(), key=lambda i: counter[i])
@@ -21,6 +22,7 @@ def get_criteria_at(pos: int, nums: list[str], _type: Literal["o2", "co2"]) -> s
     return most if _type == "o2" else least
 
 def filter_numbers(bytes: list[str], i: int, type_: Literal["o2", "co2"]) -> str:
+    """Filter numbers based on the bit conditions."""
     criteria = get_criteria_at(i, bytes, type_)
     filtered = [byte for byte in bytes if byte[i] == criteria]
 
