@@ -6,8 +6,6 @@ from helpers import Puzzle
 puzzle = Puzzle(day=3)
 lines = puzzle.lines()
 
-length = len(lines[0])
-
 
 def get_criteria_at(pos: int, nums: list[str], _type: Literal["o2", "co2"]) -> str:
     """Get the most/least common bit at a specified position"""
