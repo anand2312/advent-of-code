@@ -1,8 +1,7 @@
 from dataclasses import dataclass
-from typing import Any, Dict, List, Optional, Tuple, Union
+from typing import Dict, List, Tuple
 
 import numpy as np
-from numpy.lib.arraysetops import isin
 import numpy.typing as npt
 
 from helpers import Puzzle
@@ -19,14 +18,7 @@ class Position:
     def __bool__(self) -> bool:
         # used during ANY/ALL checking
         return self.marked
-    
-    def __add__(self, other: "Position") -> "Position":
-        # used in the end while summing
-        # return a Position object to allow the array
-        # to be passed into sum()
-        # access the actual sum with
-        # pos.num
-        return Position(self.num + other.num)
+
 
 BoardType = List[npt.NDArray]
 CallNumbers = List[int]
@@ -63,6 +55,13 @@ def check_if_win(board: npt.NDArray) -> bool:
     return False
 
 
+
+def calculate_score(board: npt.NDArray, num: int) -> int:
+    """Calculate the final score of a board"""
+    unmarked_sum = sum(i.num for i in board.ravel() if not i.marked)
+    return num * unmarked_sum
+
+
 def main() -> int:
     nums, boards, positions = parse_input()
 
@@ -74,13 +73,10 @@ def main() -> int:
         # check if any board has won
         for board in boards:
             if check_if_win(board):
-                # calculate sum of unmarked positions
-                unmarked_sum = sum(i.num for i in board.ravel() if not i.marked)
-                # the answer is the number that was just called
-                # multiplied by the unmarked sum
-                return num * unmarked_sum
+                return calculate_score(board, num)
     else:
         return -1 # fail case, only to appease type system
 
 
-print(main())
+if __name__ == "__main__":
+    print(main())
