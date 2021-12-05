@@ -36,31 +36,9 @@ def get_diagonal_line_points(line: LineType) -> Set[PointType]:
     x1, y1 = start
     x2, y2 = end
 
-    length = int(math.sqrt(((x2 - x1) ** 2) + ((y2 - y2) ** 2)))
-
-    if y1 > y2:
-        high_x, high_y = start
-        low_x, low_y = end
-    else:
-        high_x, high_y = end
-        low_x, low_y = start
-
-    if high_x > low_x:
-        # if high_x is greater, the lower point is to the left
-        incr = -1
-    else:
-        # else it is to the right
-        incr = 1
-    
-    out = {(x1, y1), (x2, y2)}
-
-    while high_x != low_x and high_y != low_y:
-        high_x += incr
-        high_y -= 1
-        new_pt = (high_x, high_y)
-        out.add(new_pt)
-    
-    return out
+    sign = lambda a: (a > 0) - (a < 0)
+    sign_x, sign_y = sign(x2 - x1), sign(y2 - y1)
+    return set(zip(range(x1, x2 + sign_x, sign_x), range(y1, y2 + sign_y, sign_y)))
 
 
 def main() -> int:
