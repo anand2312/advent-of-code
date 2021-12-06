@@ -1,6 +1,6 @@
 use crate::helpers;
 
-pub fn task_01() -> Option<u32> {
+pub fn task_01() -> Option<u128> {
     let raw_content = helpers::read_input(2);
     let instructions = raw_content
         .lines()
@@ -27,10 +27,10 @@ pub fn task_01() -> Option<u32> {
             }
         };
     }
-    return Some(hor * ver);
+    return Some((hor * ver) as u128);
 }
 
-pub fn task_02() -> Option<u32> {
+pub fn task_02() -> Option<u128> {
     let raw_content = helpers::read_input(2);
     let instructions = raw_content
         .lines()
@@ -59,5 +59,5 @@ pub fn task_02() -> Option<u32> {
             }
         };
     }
-    return Some(hor * ver);
+    return Some((hor * ver) as u128);
 }
