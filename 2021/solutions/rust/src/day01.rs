@@ -1,6 +1,6 @@
 use crate::helpers;
 
-pub fn task_01() -> Option<u128> {
+pub fn task_01() -> String {
     let raw_content = helpers::read_input(1);
     let intlines = helpers::intlines(&raw_content);
     let end = intlines.len();
@@ -11,10 +11,10 @@ pub fn task_01() -> Option<u128> {
             count += 1;
         }
     }
-    return Some(count);
+    return count.to_string();
 }
 
-pub fn task_02() -> Option<u128> {
+pub fn task_02() -> String {
     let raw_content = helpers::read_input(1);
     let intlines = helpers::intlines(&raw_content);
     let end = intlines.len();
@@ -28,5 +28,5 @@ pub fn task_02() -> Option<u128> {
             count += 1;
         }
     }
-    return Some(count);
+    return count.to_string();
 }

@@ -1,6 +1,6 @@
 use crate::helpers;
 
-pub fn solution(days: i32) -> Option<u128> {
+pub fn solution(days: i32) -> String {
     let raw_input = helpers::read_input(6);
     let fish = raw_input.split(",").map(|x| {
         x.parse::<u128>()
@@ -27,5 +27,5 @@ pub fn solution(days: i32) -> Option<u128> {
         counts = next_iteration;
     }
 
-    return Some(counts.iter().sum::<u128>());
+    return counts.iter().sum::<u128>().to_string();
 }

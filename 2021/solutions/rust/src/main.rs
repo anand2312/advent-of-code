@@ -4,6 +4,7 @@ mod day02;
 // mod day04; doesn't work
 // mod day05;
 mod day06;
+mod day08;
 mod helpers;
 use std::collections::HashMap;
 use std::env;
@@ -18,6 +19,8 @@ fn main() {
         ("2 2", day02::task_02()),
         ("6 1", day06::solution(80)),
         ("6 2", day06::solution(256)),
+        ("8 1", day08::task_01()),
+        ("8 2", day08::task_02())
     ]);
     let args: Vec<String> = env::args().collect();
     let day = args[1].parse::<i32>().unwrap();
@@ -25,7 +28,6 @@ fn main() {
     let key = format!("{} {}", day, task);
     let res = solutions
         .get(key.as_str())
-        .expect("Get panicked")
-        .expect("Solution panicked");
+        .expect("Get panicked");
     println!("Day {} Task {}\nSolution: {}", day, task, res);
 }
