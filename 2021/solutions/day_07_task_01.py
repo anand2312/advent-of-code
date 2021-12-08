@@ -1,5 +1,4 @@
 import numpy as np
-from typing import cast
 from helpers import Puzzle
 
 
@@ -15,7 +14,7 @@ def main() -> int:
         if fuel_needed < small:
             small = fuel_needed
     
-    return cast(int, small)
+    return int(small)
 
 
 print(main())
