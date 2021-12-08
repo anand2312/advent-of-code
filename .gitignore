@@ -1,5 +1,5 @@
 .replit
-.vs
+.vscode
 __pycache__
 testing.py
 .env
