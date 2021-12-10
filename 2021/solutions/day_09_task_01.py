@@ -13,7 +13,7 @@ def main(raw: str) -> int:
     lines = parse_input(raw)
     padded = np.pad(lines, 1, "constant", constant_values=9)
 
-    # make another array that's padded at the top and bottom
+    # make another array that's padded at all sides with 9 (9 being the largest number wont affect comparisons)
     # then use this to compare each element with it's neighbours
 
     lows = (
