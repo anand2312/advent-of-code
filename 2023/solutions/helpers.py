@@ -31,13 +31,13 @@ class Puzzle:
     def lines(self) -> List[str]:
         """Returns the input as a list of lines"""
         return self.raw_content.splitlines()
-    
+
     def get_input_data(self) -> None:
         """Make an HTTP request to AoC, fetch the input data and make a file."""
         session = os.environ.get("AOC_SESSION_COOKIE")
         if not session:
             raise ValueError("Session cookie not found")
         r = requests.get(INPUT_URL.format(day=self.day), cookies={"session": session})
-        
+
         self.raw_content = r.text.strip()
         self._input_file.write_text(r.text)

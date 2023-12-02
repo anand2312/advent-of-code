@@ -13,7 +13,7 @@ nums = {
     "six": 6,
     "seven": 7,
     "eight": 8,
-    "nine": 9
+    "nine": 9,
 }
 patterns = {re.compile(f"^{key}"): val for key, val in nums.items()}
 
@@ -39,6 +39,7 @@ def main(lines: list[str]) -> int:
         total += tens * 10 + ones
     return total
 
+
 if __name__ == "__main__":
     sample = """two1nine
 eightwothree
@@ -49,5 +50,3 @@ zoneight234
 7pqrstsixteen"""
     print(main(sample.splitlines()))
     print(main(puzzle.lines()))
-        
-                        
