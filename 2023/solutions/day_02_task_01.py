@@ -39,7 +39,6 @@ def check(tup: Turn) -> bool:
 
 def main(lines: list[str]) -> int:
     parsed = parse_input(lines)
-    possible = (12, 13, 14)
     total = 0
     for key, value in parsed.items():
         if any([check(i) for i in value]):

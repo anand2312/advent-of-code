@@ -22,7 +22,6 @@ def main(lines: list[str]) -> int:
     total = 0
     for line in lines:
         tens, ones = None, None
-        line_len = len(line)
         for idx, char in enumerate(line):
             if char.isdigit():
                 if tens is None:

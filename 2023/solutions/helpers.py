@@ -18,11 +18,18 @@ class Puzzle:
     def __init__(self, day: int) -> None:
         self.day = day
         self._input_file = INPUT_DIR / f"day_{day:0>2}.txt"
+        self._sample_file = INPUT_DIR / f"sample_{day:0>2}.txt"
 
         if self._input_file.exists():
             self.raw_content = self._input_file.read_text().strip()
         else:
             self.get_input_data()
+
+    def sample_lines(self) -> List[str]:
+        """Returns the sample input as a list of lines"""
+        if not self._sample_file.exists():
+            raise ValueError(f"Sample data not found for day: {self.day}")
+        return self._sample_file.read_text().splitlines()
 
     def intlines(self) -> List[int]:
         """Splits the raw content and converts each element to an integer"""
