@@ -13,7 +13,7 @@ def main(lines: list[str]) -> int:
     counts = Counter(cards.keys())
     for k, v in cards.items():
         for i in range(k + 1, k + common(v) + 1):
-            counts[i] += 1 * counts[k]
+            counts[i] += counts[k]
     return sum(counts.values())
 
 
