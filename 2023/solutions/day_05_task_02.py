@@ -45,7 +45,7 @@ def seed_to_location_range(
                 break
         else:
             out.append(r)
-    out = [i for i in out if bool(i)]
+    out = [i for i in out if bool(i)]  # filter out empty ranges
     return seed_to_location_range(out, maps[curr][0].dest, maps)
 
 
