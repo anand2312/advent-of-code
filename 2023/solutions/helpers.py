@@ -1,6 +1,7 @@
 """Helper functions"""
 import os
 import pathlib
+from itertools import islice
 from typing import List
 
 import requests
@@ -12,6 +13,14 @@ load_dotenv(pathlib.Path(__file__).parent.parent.parent / ".env")
 BASE_URL = "https://adventofcode.com/2023/day/{day}"
 INPUT_URL = BASE_URL + "/input"
 INPUT_DIR = pathlib.Path(__file__).parent.parent / "inputs"
+
+
+def chunks(iterable, n):
+    if n < 1:
+        raise ValueError("n must be at least one")
+    it = iter(iterable)
+    while batch := tuple(islice(it, n)):
+        yield batch
 
 
 class Puzzle:

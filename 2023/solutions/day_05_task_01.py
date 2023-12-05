@@ -47,8 +47,6 @@ def seed_to_location(n: int, maps: dict[str, list[Mapping]]) -> int:
         for m in maps[curr_src]:
             if m.src_start <= curr <= m.src_start + m.size:
                 diff = curr - m.src_start
-                # print(f"{curr_src} to {m.dest}")
-                # print(f"{m=} {curr=} maps to {m.dest_start + diff}")
                 curr = m.dest_start + diff
                 curr_src = m.dest
                 break
