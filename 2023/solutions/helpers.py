@@ -31,6 +31,12 @@ class Puzzle:
             raise ValueError(f"Sample data not found for day: {self.day}")
         return self._sample_file.read_text().splitlines()
 
+    def sample(self) -> str:
+        """Returns the sample input, as is."""
+        if not self._sample_file.exists():
+            raise ValueError(f"Sample data not found for day: {self.day}")
+        return self._sample_file.read_text()
+
     def intlines(self) -> List[int]:
         """Splits the raw content and converts each element to an integer"""
         return [int(i) for i in self.raw_content.split()]
