@@ -4,3 +4,5 @@ __pycache__
 testing.py
 .env
 target
+*.cpp
+a.out
