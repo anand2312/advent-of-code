@@ -6,3 +6,4 @@ testing.py
 target
 *.cpp
 a.out
+*.txt
