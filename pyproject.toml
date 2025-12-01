@@ -1,18 +1,19 @@
-[tool.poetry]
+[project]
 name = "advent-of-code"
 version = "0.1.0"
 description = ""
-authors = ["anand2312 <anandkrishna2312@gmail.com>"]
+authors = [{ name = "anand2312", email = "anandkrishna2312@gmail.com" }]
+requires-python = ">=3.8"
 license = "MIT"
+dependencies = [
+    "requests>=2.26.0,<3",
+    "python-dotenv>=0.19.2,<0.20",
+    "numpy>=1.24.4,<2",
+]
 
-[tool.poetry.dependencies]
-python = ">=3.8"
-requests = "^2.26.0"
-python-dotenv = "^0.19.2"
-numpy = "^1.24.4"
-
-[tool.poetry.dev-dependencies]
+[dependency-groups]
+dev = []
 
 [build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
