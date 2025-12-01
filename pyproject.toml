@@ -2,8 +2,8 @@
 name = "advent-of-code"
 version = "0.1.0"
 description = ""
-authors = [{ name = "anand2312", email = "anandkrishna2312@gmail.com" }]
-requires-python = ">=3.8"
+authors = [{ name = "Anand Krishna", email = "40204976+anand2312@users.noreply.github.com" }]
+requires-python = ">=3.14"
 license = "MIT"
 dependencies = [
     "requests>=2.26.0,<3",
