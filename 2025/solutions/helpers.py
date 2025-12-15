@@ -30,7 +30,7 @@ class Puzzle:
         self._sample_file = INPUT_DIR / f"sample_{day:0>2}.txt"
 
         if self._input_file.exists():
-            self.raw_content = self._input_file.read_text().strip()
+            self.raw_content = self._input_file.read_text()
         else:
             self.get_input_data()
 

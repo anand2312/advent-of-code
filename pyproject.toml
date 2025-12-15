@@ -10,6 +10,7 @@ dependencies = [
     "python-dotenv>=0.19.2,<0.20",
     "numpy>=2.3.5",
     "python-ranges>=1.2.2",
+    "polars>=1.36.1",
 ]
 
 [dependency-groups]
